@@ -8,7 +8,13 @@ public class Car : MonoBehaviour
     private float horizontalInput, verticalInput;
     private float currentSteerAngle, currentbreakForce;
     private bool isBreaking;
+    public GameObject carBack;
 
+    public static Car instance;
+    private void Awake()
+    {
+        instance = this;
+    }
     // Settings
     [SerializeField] private float motorForce, breakForce, maxSteerAngle;
 
