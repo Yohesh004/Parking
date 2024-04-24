@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ public class toll : MonoBehaviour
     public int occupiedCount = 0;
     [SerializeField] private SubSlot[] SubSlots;
     [SerializeField] private GameObject[] Lights;
+    [SerializeField] private TextMeshProUGUI slotCount;
     public void OpenToll()
     {
         targetRotation = new Vector3(0, 0, rotationValueZ);
@@ -27,7 +29,8 @@ public class toll : MonoBehaviour
     }
     public void CloseToll()
     {
-        if(tollGate.transform.eulerAngles.z == 0) 
+        CheckAvailability();
+        if (tollGate.transform.eulerAngles.z == 0) 
         {
             Debug.Log("No need to Close toll called");
         }
@@ -75,6 +78,7 @@ public class toll : MonoBehaviour
             Debug.Log("toll close called from carback");
         }
         CheckAvailability();
+        MainToll.instance.CheckAvailability();
         //if (Input.GetKey(KeyCode.S)&& other.gameObject.CompareTag("carback"))
         //{
         //    OpenToll();
@@ -108,6 +112,7 @@ public class toll : MonoBehaviour
                 ChangeTrafficLightColor(false, false, true);// green color turn on
             }
         }
+        slotCount.text = "SLOT AVAILABLE :"+ occupiedCount;
     }
 
     private void ChangeTrafficLightColor(bool red , bool yellow , bool green) 
@@ -117,17 +122,3 @@ public class toll : MonoBehaviour
         Lights[2].SetActive(green);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

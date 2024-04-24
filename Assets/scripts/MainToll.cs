@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MainToll : MonoBehaviour
@@ -12,18 +13,28 @@ public class MainToll : MonoBehaviour
     public int occupiedCount = 0;
     [SerializeField] private SubSlot[] SubSlots;
     [SerializeField] private GameObject[] Lights;
+    [SerializeField] private TextMeshProUGUI[] slotCount;
+    [SerializeField] private GameObject[] Tolls;
+
+    public static MainToll instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
     public void OpenToll()
     {
         targetRotation = new Vector3(0, 0, rotationValueZ);
         tollGate.transform.Rotate(targetRotation);
+        ChangeTrafficLightColor(false, true, false);// yellow color turn on 
     }
     private void Start()
     {
         CheckAvailability();
-
     }
     public void CloseToll()
     {
+        CheckAvailability();
         if (tollGate.transform.eulerAngles.z == 0)
         {
             Debug.Log("No need to Close toll called");
@@ -67,7 +78,7 @@ public class MainToll : MonoBehaviour
         //}
     }
 
-    private void CheckAvailability()
+    public void CheckAvailability()
     {
         occupiedCount = 0;
         for (int i = 0; i < SubSlots.Length; i++)
@@ -95,6 +106,10 @@ public class MainToll : MonoBehaviour
                 // glow the green light
                 ChangeTrafficLightColor(false, false, true);
             }
+        }
+        for (int i = 0;i < slotCount.Length;i++) 
+        {
+            slotCount[i].text = "SLOT " + (i+1) + " : " + Tolls[i].GetComponent<toll>().occupiedCount;
         }
     }
 
