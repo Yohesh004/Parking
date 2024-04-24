@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class LightManager : MonoBehaviour
 {
     [SerializeField] private Light directionLight;
+    [SerializeField] private GameObject[] streetLights;
 
-    public void LightOn()
+    public void Light(bool onOrOff)
     {
-        directionLight.enabled = true;
+        directionLight.enabled = onOrOff;
+        ChangeLightBehaviour(!onOrOff);
     }
 
-    public void LightOff()
+    public void ChangeLightBehaviour(bool onOrOff) 
     {
-        directionLight.enabled = false;
+        for (int i = 0; i < streetLights.Length; i++) 
+        {
+            streetLights[i].gameObject.SetActive(onOrOff);
+        }
     }
 }

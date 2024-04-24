@@ -28501,6 +28501,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7792164838555213228, guid: b8ee657c6800ab849bb30b4375d02323, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34153,6 +34157,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7792164838555213228, guid: b8ee657c6800ab849bb30b4375d02323, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -37721,15 +37729,15 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1586723281}
         m_TargetAssemblyTypeName: LightManager, Assembly-CSharp
-        m_MethodName: LightOn
-        m_Mode: 1
+        m_MethodName: Light
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1143582200
 MonoBehaviour:
@@ -47511,8 +47519,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1586723281}
         m_TargetAssemblyTypeName: LightManager, Assembly-CSharp
-        m_MethodName: LightOff
-        m_Mode: 1
+        m_MethodName: Light
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -52734,6 +52742,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directionLight: {fileID: 705507994}
+  streetLights:
+  - {fileID: 1675751496}
+  - {fileID: 2109988809}
+  - {fileID: 1969833018}
 --- !u!1001 &1587881414
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55719,6 +55731,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5710835890597139699, guid: 38aa9050d53719844b1ab97b1bbadf62, type: 3}
   m_PrefabInstance: {fileID: 712668083}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1675751496 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7792164838555213228, guid: b8ee657c6800ab849bb30b4375d02323, type: 3}
+  m_PrefabInstance: {fileID: 1017869846}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1676191100 stripped
 Transform:
@@ -58963,6 +58980,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b8ee657c6800ab849bb30b4375d02323, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7792164838555213228, guid: b8ee657c6800ab849bb30b4375d02323, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -64975,6 +64996,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 505654802087498654, guid: d9e032423f8d58b48b36a25f7f980940, type: 3}
   m_PrefabInstance: {fileID: 91415687}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1969833018 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7792164838555213228, guid: b8ee657c6800ab849bb30b4375d02323, type: 3}
+  m_PrefabInstance: {fileID: 873586203}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1969900765
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69226,6 +69252,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9e032423f8d58b48b36a25f7f980940, type: 3}
+--- !u!1 &2109988809 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7792164838555213228, guid: b8ee657c6800ab849bb30b4375d02323, type: 3}
+  m_PrefabInstance: {fileID: 1777033186}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2110174966 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5814628092460172587, guid: d1834fb4cb815b4428925b5d639590ac, type: 3}
