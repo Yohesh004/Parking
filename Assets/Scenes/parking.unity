@@ -31318,6 +31318,7 @@ GameObject:
   - component: {fileID: 961473696}
   - component: {fileID: 961473695}
   - component: {fileID: 961473694}
+  - component: {fileID: 961473697}
   m_Layer: 5
   m_Name: MainToll
   m_TagString: Untagged
@@ -31390,29 +31391,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 373543947}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 961473697}
+        m_TargetAssemblyTypeName: MainTollButton, Assembly-CSharp
+        m_MethodName: ButtonsVisisbility
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1366840791}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &961473695
 MonoBehaviour:
@@ -31452,6 +31441,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961473692}
   m_CullTransparentMesh: 1
+--- !u!114 &961473697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961473692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c3c3750f5b842448371c3693dc837f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TollButtons: {fileID: 373543947}
+  MainTollStsPanel: {fileID: 1366840791}
+  TollStsPanel:
+  - {fileID: 1566167323}
+  - {fileID: 350295898}
+  - {fileID: 1694248401}
+  visibility: 1
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
