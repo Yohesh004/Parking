@@ -41,7 +41,7 @@ public class MainToll : MonoBehaviour
         }
         else
         {
-            tollGate.transform.Rotate(new Vector3(0, 0, 45f));
+            tollGate.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0f));
             Debug.Log("Close toll called");
         }
     }
@@ -51,7 +51,7 @@ public class MainToll : MonoBehaviour
         if (others.gameObject.CompareTag("car"))
         {
             CheckAvailability();
-            if (occupiedCount >= 6)
+            if (occupiedCount >= 3)
             {
                 //isSlotAvailabe = 0;
             }
@@ -61,6 +61,14 @@ public class MainToll : MonoBehaviour
                 if (isSlotAvailabe == 1)
                 {
                     OpenToll();
+                }
+            }
+            for (int i = 0; i < slotCount.Length; i++)
+            {
+                if (Tolls[i].GetComponent<toll>().occupiedCount <= 0)
+                {
+                    Tolls[i].GetComponent<toll>().OpenToll();
+                    break;
                 }
             }
         }
@@ -109,7 +117,14 @@ public class MainToll : MonoBehaviour
         }
         for (int i = 0;i < slotCount.Length;i++) 
         {
-            slotCount[i].text = "SLOT " + (i+1) + " : " + Tolls[i].GetComponent<toll>().occupiedCount;
+            if(Tolls[i].GetComponent<toll>().occupiedCount <= 0) 
+            {
+                slotCount[i].text = "SLOT " + (i + 1) +":"+ "Yes";
+            }
+            else
+            {
+                slotCount[i].text = "SLOT " + (i + 1) +":"+ "Nope";
+            }
         }
     }
 

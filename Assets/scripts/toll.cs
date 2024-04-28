@@ -19,7 +19,7 @@ public class toll : MonoBehaviour
     public void OpenToll()
     {
         targetRotation = new Vector3(0, 0, rotationValueZ);
-        tollGate.transform.Rotate(targetRotation);
+        tollGate.transform.rotation = Quaternion.Euler(targetRotation);
         ChangeTrafficLightColor(false, true, false);// yellow color turn on 
     }
     private void Start()
@@ -36,7 +36,7 @@ public class toll : MonoBehaviour
         }
         else 
         {
-            tollGate.transform.Rotate(new Vector3(0, 0, 45f));
+            tollGate.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0f)); 
             Debug.Log("Close toll called");
         }  
     }
@@ -46,7 +46,7 @@ public class toll : MonoBehaviour
         if (others.gameObject.CompareTag("car"))
         {
             CheckAvailability();
-            if (occupiedCount >= 2)
+            if (occupiedCount >= 1)
             {
                 //isSlotAvailabe = 0;
             }
@@ -90,7 +90,7 @@ public class toll : MonoBehaviour
         occupiedCount = 0;
         for (int i = 0; i < SubSlots.Length; i++)
         {
-            if (SubSlots[i].isOccupied == 1)
+            if (SubSlots[i].isOccupied >= 1)
             {
                 occupiedCount++;
             }
@@ -99,20 +99,29 @@ public class toll : MonoBehaviour
             //    occupiedCount--;
             //}
         }
-        if (occupiedCount >= 2)
+        if (occupiedCount >= 1)
         {
             isSlotAvailabe = 0;
             ChangeTrafficLightColor(true, false, false); // red color turn on
         }
         else
-        {        
+        {
             isSlotAvailabe = 1;
             if (isSlotAvailabe == 1)
             {
                 ChangeTrafficLightColor(false, false, true);// green color turn on
             }
         }
-        slotCount.text = "SLOT AVAILABLE :"+ occupiedCount;
+
+        if(occupiedCount <= 0)
+        {
+            slotCount.text = "SLOT AVAILABLE :" + "Yes";
+        }
+        if (occupiedCount > 0)
+        {
+            slotCount.text = "SLOT AVAILABLE :" + "Nope";
+        }
+
     }
 
     private void ChangeTrafficLightColor(bool red , bool yellow , bool green) 
