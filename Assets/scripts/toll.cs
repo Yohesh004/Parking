@@ -55,14 +55,14 @@ public class toll : MonoBehaviour
                 //isSlotAvailabe = 1;
                 if (isSlotAvailabe == 1)
                 {
-                    OpenToll();
+                    //OpenToll();// because of API
                     Debug.Log("toll open called from car");
                 }
             }
         }
         if (others.gameObject.CompareTag("carback")) 
         {
-            OpenToll();
+            //OpenToll();// because of API
             Debug.Log("toll open called from carback");
         }
     }
@@ -70,7 +70,7 @@ public class toll : MonoBehaviour
     {
         if (other.gameObject.CompareTag("car"))
         {
-                CloseToll();
+                //CloseToll(); // Because of API
         }
         if (other.gameObject.CompareTag("carback"))
         {

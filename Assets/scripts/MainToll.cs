@@ -42,6 +42,16 @@ public class MainToll : MonoBehaviour
                     break;
                 }
             }
+            else
+            {
+                if (Tolls[i].GetComponent<toll>().occupiedCount > 0)
+                {
+                    OpenToll();
+                    Debug.Log("open" + i);
+                    Tolls[i].GetComponent<toll>().CloseToll();
+                    break;
+                }
+            }
         }
     }
     public void OpenToll()
@@ -82,7 +92,7 @@ public class MainToll : MonoBehaviour
                 //isSlotAvailabe = 1;
                 if (isSlotAvailabe == 1)
                 {
-                    OpenToll();
+                    //OpenToll(); // because of api
                 }
             }
             //for (int i = 0; i < slotCount.Length; i++)
@@ -100,7 +110,7 @@ public class MainToll : MonoBehaviour
         CheckAvailability();
         if (other.gameObject.CompareTag("car"))
         {
-            CloseToll();
+            //CloseToll(); // because of API
         }
         //if (Input.GetKey(KeyCode.S)&& other.gameObject.CompareTag("carback"))
         //{
