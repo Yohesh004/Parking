@@ -12,7 +12,7 @@ public class toll : MonoBehaviour
     public float rotationValueZ = -45f;
     public Vector3 targetRotation;
     public int isSlotAvailabe;
-    public int occupiedCount = 0;
+    public int occupiedCount;
     [SerializeField] private SubSlot[] SubSlots;
     [SerializeField] private GameObject[] Lights;
     [SerializeField] private TextMeshProUGUI slotCount;
@@ -94,34 +94,27 @@ public class toll : MonoBehaviour
             {
                 occupiedCount++;
             }
-            //else
-            //{
-            //    occupiedCount--;
-            //}
-        }
-        if (occupiedCount >= 1)
-        {
-            isSlotAvailabe = 0;
-            ChangeTrafficLightColor(true, false, false); // red color turn on
-        }
-        else
-        {
-            isSlotAvailabe = 1;
-            if (isSlotAvailabe == 1)
+            else
             {
-                ChangeTrafficLightColor(false, false, true);// green color turn on
+                isSlotAvailabe++;
             }
-        }
-
-        if(occupiedCount <= 0)
-        {
-            slotCount.text = "SLOT AVAILABLE :" + "Yes";
         }
         if (occupiedCount > 0)
         {
+            //isSlotAvailabe = 0;
+            ChangeTrafficLightColor(true, false, false); // red color turn on
             slotCount.text = "SLOT AVAILABLE :" + "Nope";
         }
-
+        else
+        {
+            ChangeTrafficLightColor(false, false, true);// green color turn on
+            slotCount.text = "SLOT AVAILABLE :" + "Yes";
+            //isSlotAvailabe = 1;
+            //if (isSlotAvailabe == 1)
+            //{
+            //    ChangeTrafficLightColor(false, false, true);// green color turn on
+            //}
+        }
     }
 
     private void ChangeTrafficLightColor(bool red , bool yellow , bool green) 

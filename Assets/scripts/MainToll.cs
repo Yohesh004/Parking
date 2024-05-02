@@ -15,6 +15,9 @@ public class MainToll : MonoBehaviour
     [SerializeField] private GameObject[] Lights;
     [SerializeField] private TextMeshProUGUI[] slotCount;
     [SerializeField] private GameObject[] Tolls;
+    [SerializeField] private api_test_thingspeak api;
+    [SerializeField] private string[] Field_List;
+
 
     public static MainToll instance;
 
@@ -22,10 +25,26 @@ public class MainToll : MonoBehaviour
     {
         instance = this;
     }
+    private void Update()
+    {
+        Field_List[0] = api.Field1;
+        Field_List[1] = api.Field2;
+        Field_List[2] = api.Field3;
+        for (int i = 0; i < Field_List.Length; i++) 
+        {
+            if (Field_List[i] == "1")
+            {
+                OpenToll();
+                Debug.Log("open"+ i);
+                Tolls[i].GetComponent<toll>().OpenToll();
+                break;
+            }
+        }
+    }
     public void OpenToll()
     {
         targetRotation = new Vector3(0, 0, rotationValueZ);
-        tollGate.transform.Rotate(targetRotation);
+        tollGate.transform.rotation = Quaternion.Euler(targetRotation);
         ChangeTrafficLightColor(false, true, false);// yellow color turn on 
     }
     private void Start()
@@ -63,14 +82,14 @@ public class MainToll : MonoBehaviour
                     OpenToll();
                 }
             }
-            for (int i = 0; i < slotCount.Length; i++)
-            {
-                if (Tolls[i].GetComponent<toll>().occupiedCount <= 0)
-                {
-                    Tolls[i].GetComponent<toll>().OpenToll();
-                    break;
-                }
-            }
+            //for (int i = 0; i < slotCount.Length; i++)
+            //{
+            //    if (Tolls[i].GetComponent<toll>().occupiedCount <= 0)
+            //    {
+            //        Tolls[i].GetComponent<toll>().OpenToll();
+            //        break;
+            //    }
+            //}
         }
     }
     private void OnTriggerExit(Collider other)
