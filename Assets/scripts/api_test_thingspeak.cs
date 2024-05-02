@@ -45,6 +45,7 @@ public class api_test_thingspeak : MonoBehaviour
                     this.Field2 = data.field2;
                     this.Field3 = data.field3;
                     Debug.Log(fieldName + " value: " + fieldValue);
+                    MainToll.instance.OpenTollsBasedOnApiValue();
                 }
             }
             else

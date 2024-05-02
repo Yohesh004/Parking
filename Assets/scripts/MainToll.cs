@@ -25,7 +25,7 @@ public class MainToll : MonoBehaviour
     {
         instance = this;
     }
-    private void Update()
+    public void OpenTollsBasedOnApiValue()
     {
         Field_List[0] = api.Field1;
         Field_List[1] = api.Field2;
@@ -34,10 +34,13 @@ public class MainToll : MonoBehaviour
         {
             if (Field_List[i] == "1")
             {
-                OpenToll();
-                Debug.Log("open"+ i);
-                Tolls[i].GetComponent<toll>().OpenToll();
-                break;
+                if (Tolls[i].GetComponent<toll>().occupiedCount <= 0) 
+                {
+                    OpenToll();
+                    Debug.Log("open" + i);
+                    Tolls[i].GetComponent<toll>().OpenToll();
+                    break;
+                }
             }
         }
     }
