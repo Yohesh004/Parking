@@ -32,7 +32,7 @@ public class MainToll : MonoBehaviour
         Field_List[2] = api.Field3;
         for (int i = 0; i < Field_List.Length; i++) 
         {
-            if (Field_List[i] == "1")
+            if (Field_List[i] == "0")
             {
                 if (Tolls[i].GetComponent<toll>().occupiedCount <= 0) 
                 {
@@ -42,14 +42,13 @@ public class MainToll : MonoBehaviour
                     break;
                 }
             }
-            else
+            if (Field_List[i] == "1")
             {
                 if (Tolls[i].GetComponent<toll>().occupiedCount > 0)
                 {
                     OpenToll();
-                    Debug.Log("open" + i);
+                    Debug.Log("Close" + i);
                     Tolls[i].GetComponent<toll>().CloseToll();
-                    break;
                 }
             }
         }
