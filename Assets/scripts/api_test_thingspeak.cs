@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
+using UnityEngine.UIElements;
+using System;
 
 public class api_test_thingspeak : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class api_test_thingspeak : MonoBehaviour
     public string Field1;
     public string Field2;
     public string Field3;
+
+    public Action UpdatedEvent;
 
     IEnumerator Start()
     {
@@ -37,7 +41,7 @@ public class api_test_thingspeak : MonoBehaviour
 
                 // Parse JSON data to get field values
                 ThingSpeakData1 data = JsonUtility.FromJson<ThingSpeakData1>(jsonData);
-
+                UpdatedEvent?.Invoke();
                 foreach (string fieldName in fieldNames)
                 {
                     string fieldValue = GetFieldValue(data, fieldName);
@@ -45,7 +49,7 @@ public class api_test_thingspeak : MonoBehaviour
                     this.Field2 = data.field2;
                     this.Field3 = data.field3;
                     Debug.Log(fieldName + " value: " + fieldValue);
-                    MainToll.instance.OpenTollsBasedOnApiValue();
+                    //MainToll.instance.OpenTollsBasedOnApiValue();
                 }
             }
             else
@@ -68,7 +72,7 @@ public class api_test_thingspeak : MonoBehaviour
 }
 
 [System.Serializable]
-public class ThingSpeakData1 
+public class ThingSpeakData1
 {
     public string field1;
     public string field2;
