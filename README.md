@@ -1,6 +1,4 @@
-Here's a detailed README template for your **Digital Twin Parking System** project using Unity and ThingSpeak API for real-time data integration. This README will guide users through understanding the purpose of your project, how to set it up, the core features, and how to contribute or report issues.
 
----
 
 # Digital Twin Parking System 🚗
 
@@ -148,4 +146,3 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 - Include relevant screenshots or gifs in the "Screenshots" section to visually represent the simulation.
 - You can expand the "Future Enhancements" section based on your vision for the project.
 
-Let me know if you need any more adjustments or further details!
